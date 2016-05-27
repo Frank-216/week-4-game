@@ -1,0 +1,47 @@
+
+<html>
+
+<head>
+
+        <script type="text/javascript" src="jquery-1.4.2.js"></script>
+
+        <script type="text/javascript">
+
+                $(document).ready(function() {
+
+                        $("#move").click(function() {
+
+                                $(".post").each(function() {
+
+                                        var image = $(this).children("img");
+
+                                        image.remove();
+
+                                        $("#photoholder").append(image);
+
+                                });
+
+                        });                                
+
+                });
+
+        </script>
+
+</head>
+
+<body>
+
+        <input id="move" type="button" value="move">
+
+        <div class="post"><img src="http://placehold.it/250x150"></div>
+
+        <div class="post"><img src="2.jpeg"></div>
+
+        <p>-----------------</p>
+
+ <div id="photoholder"></div>
+
+</body>
+
+</html>
+
