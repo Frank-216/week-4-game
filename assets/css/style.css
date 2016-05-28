@@ -2,16 +2,16 @@
 #hero{
 	border: green solid 2px;
 }
-.villian{
+.villain{
 	color: red;
 }
-#villian1{
+#villain1{
 	border: orange solid 2px;
 }
-#villian2{
+#villain2{
 	border: red solid 2px;
 }
-#villian3{
+#villain3{
 	border: black solid 2px;
 }
 .choosenCharacter{
