@@ -2,21 +2,15 @@
 #hero{
 	border: green solid 2px;
 }
-.villain{
-	color: red;
-}
-#villain1{
-	border: orange solid 2px;
-}
-#villain2{
-	border: red solid 2px;
-}
-#villain3{
-	border: black solid 2px;
+
 }
 .choosenCharacter{
 }
 .attack{
 	
+}
+.image-size{
+	height:300px;
+	width: 325px;
 }
 

@@ -23,11 +23,11 @@ $(document).ready(function(){
 	 var villain1 = $('#villain1');
 	 var villain2 = $('#villain2');
 	 var villain3 = $('#villain3');
-	 hero.data('value',{ name: "Luke", healthPoints:100, attackPower: 6, counterAttackPower:6});
+	 hero.data('value',{ name: "Iron Man", healthPoints:100, attackPower: 6, counterAttackPower:6});
 	 //$(".choosenCharacter").append(villain1);
-	 villain1.data("value",{ name: "Deadpool" , healthPoints:100, attackPower: 4, counterAttackPower:4});
-	 villain2.data("value",{ name: "Spiderman" , healthPoints:60, attackPower: 5, counterAttackPower:5});
-	 villain3.data("value",{ name: 'Captain America' , healthPoints:75, attackPower: 8, counterAttackPower:8});
+	 villain1.data("value",{ name: "Captain America" , healthPoints:100, attackPower: 4, counterAttackPower:4});
+	 villain2.data("value",{ name: 'DeadPool' , healthPoints:60, attackPower: 5, counterAttackPower:5});
+	 villain3.data("value",{ name: 'Spiderman' , healthPoints:75, attackPower: 8, counterAttackPower:8});
 	 var characterArray = [hero.data("value"), villain1.data('value'), villain2.data("value"), villain3.data("value")];
 	 console.log(characterArray);
 
@@ -120,7 +120,7 @@ $(document).ready(function(){
 				reset();
 			}else {
 				if(winCounter === 3){
-					alert ( you win!)
+					alert ( "you win!");
 				}else{
 					winCounter ++;//Raise Win Counter 
 				//call down new villain. 
@@ -131,7 +131,7 @@ $(document).ready(function(){
 				//characterNum = characterArray.indexOf(villainHolder);
 				//console.log(characterNum);
 				//setVillain(villainHolder);
-				$('.choosenCharacter').html('').
+				$('.defender').html('');
 				}
 				
 			}// CLose Else statement to recall villians
