@@ -1,13 +1,14 @@
 
-#hero{
-	border: green solid 2px;
+.border{
+	border:red solid 2px;
 }
 
 }
 .choosenCharacter{
 }
 .attack{
-	
+	height: 100px;
+	width: 150px;
 }
 .image-size{
 	height:300px;
