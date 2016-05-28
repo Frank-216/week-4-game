@@ -13,16 +13,15 @@
 	var villianCounterAttack;
 	var attackMultiplier;
 	console.log(villian1);
-	var tracker = true
+	var tracker = true;
 
 $(document).ready(function(){
-// all attributes are set  
+// all attributes are set
 	 var hero = $('#hero');
 	 var villian1 = $('#villian1');
 	 var villian2 = $('#villian2');
 	 var villian3 = $('#villian3');
 	 hero.data('value',{healthPoints:100, attackPower: 6, counterAttackPower:6});
-	 console.log(hero.data('value').healthPoints);
 	 //$(".choosenCharacter").append(villian1);
 	 villian1.data("value",{healthPoints:100, attackPower: 4, counterAttackPower:4});
 	 villian2.data("value",{healthPoints:60, attackPower: 5, counterAttackPower:5});
@@ -30,26 +29,27 @@ $(document).ready(function(){
 
 	// Set your character
 	$('.character').on('click',function(){
-		
-			var holder = $(this).div;
-			console.log(holder);
+		if (tracker){
 			yourHealth = $(this).data('value').healthPoints;
-			console.log(yourHealth)
+			console.log(yourHealth + " your health")
 			yourAttack = $(this).data('value').attackPower;
+			console.log(yourAttack + " your attack ");
 			attackMultiplier = yourAttack;
+			console.log(attackMultiplier);
 			tracker = false;
-			 $(".choosenCharacter").append(holder);
-			$(this).removeAttr("character");
-			
+			$(this).addClass('move');
+			$('.choosenCharacter').append($('.move'));
+			// $(".choosenCharacter").append(holder);
+			//$(this).removeAttr("character");
+		}else{
+			villianHealth = $(this).data('value').healthPoints;
+			console.log(villianHealth +" Villian health");
+			villianCounterAttack = $(this).data('value').counterAttackPower;
+			console.log(villianCounterAttack +"villian Counter")
+		}
 		})
 		
-	$('.character').on('click',function(){
-		villianHealth = $(this).data('value').healthPoints;
-		console.log(villianHealth +" Villian health");
-		villianCounterAttack = $(this).data('value').counterAttackPower;
-		console.log(villianCounterAttack = "villian Counter")
-		
-	})
+
 
 		// Select Villian
 		
@@ -63,6 +63,8 @@ $(document).ready(function(){
 		yourHealth = yourHealth - villianCounterAttack;
 		console.log(yourAttack);
 		yourAttack = yourAttack + attackMultiplier;
+		$(".textInput").html('');
+		$(".textInput").html('you attacked ')
 	})
 
 	
