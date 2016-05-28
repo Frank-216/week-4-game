@@ -14,9 +14,9 @@
 	var attackMultiplier;
 	console.log(villain1);
 	var tracker = true;
-	var characterNum; 
+	var usedCharacters; 
 	var winCounter = 0; // keep track of wins 
-
+	var villainHolder; // Refers to all objects 
 $(document).ready(function(){
 // all attributes are set
 	 var hero = $('#hero');
@@ -28,11 +28,25 @@ $(document).ready(function(){
 	 villain1.data("value",{ name: "Deadpool" , healthPoints:100, attackPower: 4, counterAttackPower:4});
 	 villain2.data("value",{ name: "Spiderman" , healthPoints:60, attackPower: 5, counterAttackPower:5});
 	 villain3.data("value",{ name: 'Captain America' , healthPoints:75, attackPower: 8, counterAttackPower:8});
-	 var characterArray = [hero, villain1, villain2, villain3];
+	 var characterArray = [hero.data("value"), villain1.data('value'), villain2.data("value"), villain3.data("value")];
+	 console.log(characterArray);
 
+	 function setVillain (villain){
+	 		console.log(villain);
+			villainName = villain.name;
+			villainHealth = villain.healthPoints;
+			villainCounterAttack = villain.counterAttackPower;
+
+			console.log(villainHolder);
+			characterNum = characterArray.indexOf(villainHolder);
+				console.log(characterNum + " Villion Object");
+			characterArray.splice(characterNum,1);
+				console.log(characterArray + "Remaining Enemies");
+				
+	 }
+	 
 	 function reset(){
-	 		//Reset all var back to zero. 
-	 		
+	 		//Reset all variables back to zero. 
 			 yourName = '';
 			 villainName = '';
 			 yourHealth = 0;
@@ -47,7 +61,15 @@ $(document).ready(function(){
 	// Set your character
 	$('.character').on('click',function(){
 		if (tracker){
-			yourName = $(this).data('value').name;
+			//Create a holder for this information 
+			villainHolder = $(this).data('value');
+			console.log(villainHolder);
+			characterNum = characterArray.indexOf(villainHolder);
+			console.log(characterNum + " Villion Object");
+			characterArray.splice(characterNum,1);
+			console.log(characterArray);
+
+			yourName = villainHolder.name;
 			console.log(yourName);
 			yourHealth = $(this).data('value').healthPoints;
 			console.log(yourHealth + " your health")
@@ -57,56 +79,65 @@ $(document).ready(function(){
 			console.log(attackMultiplier);
 			tracker = false;//
 			characterNum = characterArray.indexOf()
-			console.log(characterNum);
+			console.log(characterNum + " Spot in an array");
 			$(this).addClass('move');
 			$('.choosenCharacter').append($('.move'));
-			characterArray.splice
+	
 			
 			// $(".choosenCharacter").append(holder);
 			//$(this).removeAttr("character");
 		}else{
-				console.log($(this).data('value').name);
-	 			villainName = $(this).data('value').name;
-	 				console.log(villainName);
-				villainHealth = $(this).data('value').healthPoints;
-					console.log(villainHealth +" villain health");
-				villainCounterAttack = $(this).data('value').counterAttackPower;
-					console.log(villainCounterAttack +"villain Counter")
+			//remove object from potential array structures. 
+				villainHolder = $(this).data('value');
+				
+				console.log(characterArray);
+				setVillain(villainHolder);
 				$(this).addClass('defender');
-				$('.defender1').append($('.defender'));		}
+				$('.defender1').append($('.defender'));
+				}
 		});
-		
-
-
-		
 
 	$('.attack').on('click',function(){
-		if(yourHealth > 0 && villainHealth > 0){
-			$(".textInput").html('');
-			console.log(yourHealth + "your health " + villainHealth + " villain health");
-			console.log(yourAttack + "your attack " + villainCounterAttack + "villainCounterAttack" );
-			villainHealth = villainHealth - yourAttack;
-			yourHealth = yourHealth - villainCounterAttack;
-			$(".textInput").html(function(){
-				var entry = "<p>" + "You attacked " + villainName + " for " + yourAttack + '</p>';
-				var secondEntry = "<p>" + villainName + " Attacked you for " + villainCounterAttack + '</p>';
-				return entry + secondEntry;
-				})
-			console.log(yourAttack);
-			yourAttack = yourAttack + attackMultiplier;
+		// if there are still villians to fight continue 
+
+		console.log(characterArray.length +  "Remaining opponents left");
+			if(yourHealth > 0 && villainHealth > 0){
+				$(".textInput").html('');
+				console.log(yourHealth + "your health " + villainHealth + " villain health");
+				console.log(yourAttack + "your attack " + villainCounterAttack + "villainCounterAttack" );
+				villainHealth = villainHealth - yourAttack;
+				yourHealth = yourHealth - villainCounterAttack;
+				$(".textInput").html(function(){
+					var entry = "<p>" + "You attacked " + villainName + " for " + yourAttack + '</p>';
+					var secondEntry = "<p>" + villainName + " Attacked you for " + villainCounterAttack + '</p>';
+					return entry + secondEntry;
+					})
+				//Increase attack every attack 
+				yourAttack = yourAttack + attackMultiplier;
 			
-		}else if(yourHealth < 0){
-			$('.textInput').html('YOU LOST !!!');
-			reset();
-		}else {
-			winCounter ++;//Raise Win Counter 
-			//call down new villain. 
-			$('.textInput').html('You won Round '+ winCounter + " your next opponent is enterintg the stage");
-			// moe next available element from array into the villian box. 
+			}else if(yourHealth < 0){
+				$('.textInput').html('YOU LOST !!!');
+				reset();
+			}else {
+				if(winCounter === 3){
+					alert ( you win!)
+				}else{
+					winCounter ++;//Raise Win Counter 
+				//call down new villain. 
+				$('.textInput').html('You won Round '+ winCounter + " Choose Your next Opponent");
+				// move next available element from array into the villain box. 
 
+				//villainHolder = characterArray[Math.floor(Math.random()* characterArray.length)];
+				//characterNum = characterArray.indexOf(villainHolder);
+				//console.log(characterNum);
+				//setVillain(villainHolder);
+				$('.choosenCharacter').html('').
+				}
+				
+			}// CLose Else statement to recall villians
 
-
-		}
+		
+		
 		
 	})
 
