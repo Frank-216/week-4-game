@@ -1,18 +1,17 @@
 
 .border{
-	border:red solid 2px;
-	height: 100px;
+	border: 2px #f8f8ff solid;
+	background-color: #FFFAFA;
+}
+body{
+	background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/04/Minimalist-backgrounds-images-photos.png');
 }
 
-}
 .choosenCharacter{
 }
 .attack{
 	height: 100px;
 	width: 150px;
 }
-.image-size{
-	height:300px;
-	width: 325px;
-}
+
 

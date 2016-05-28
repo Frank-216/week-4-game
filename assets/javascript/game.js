@@ -108,8 +108,8 @@ $(document).ready(function(){
 				villainHealth = villainHealth - yourAttack;
 				yourHealth = yourHealth - villainCounterAttack;
 				$(".textInput").html(function(){
-					var entry = "<p>" + "You attacked " + villainName + " for " + yourAttack + '</p>';
-					var secondEntry = "<p>" + villainName + " Attacked you for " + villainCounterAttack + '</p>';
+					var entry = "<p><h2>" + "You attacked " + villainName + " for " + yourAttack +"points of damage" +'</h2></p>';
+					var secondEntry = "<p><h2>" + villainName + " Attacked you for " + villainCounterAttack +"points of damage" +'</h2></p>';
 					return entry + secondEntry;
 					})
 				//Increase attack every attack 
@@ -124,7 +124,7 @@ $(document).ready(function(){
 				}else{
 					winCounter ++;//Raise Win Counter 
 				//call down new villain. 
-				$('.textInput').html('You won Round '+ winCounter + " Choose Your next Opponent");
+				$('.textInput').html('<p><h2>You won Round '+ winCounter + "! Choose Your next Opponent</h2></p>");
 				// move next available element from array into the villain box. 
 
 				//villainHolder = characterArray[Math.floor(Math.random()* characterArray.length)];
